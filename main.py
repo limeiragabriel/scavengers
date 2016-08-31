@@ -1,5 +1,6 @@
 import pygame, sys
 from tile import Tile
+from charactersC import *
 
 pygame.init()
 
@@ -30,6 +31,9 @@ for y in range(0, tela.get_height(), 40):
 			Tile(x, y, 'vazio')
 
 
+zombie1 = Zombie(200,240)
+survivor = Survivor(400,120)
+
 # ... loop principal ...
 while True:
 
@@ -43,6 +47,9 @@ while True:
 	tela.fill([0,0,0])
 	
 	Tile.draw_tiles(tela)
+
+	survivor.draw(tela)
+	zombie1.draw(tela)
 
 	pygame.display.flip() #update screen
 	clock.tick(FPS)

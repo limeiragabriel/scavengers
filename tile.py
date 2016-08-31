@@ -5,7 +5,7 @@ class Tile(pygame.Rect):
 	Lista = []
 	largura, altura = 40, 40
 	total_tiles = 1
-	H,V = 1, 18
+	H,V = 1, 20
 
 	def __init__(self, x, y, Type):
 
