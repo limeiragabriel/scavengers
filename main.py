@@ -1,8 +1,10 @@
 import pygame, sys
 from tile import Tile
 from charactersC import *
+from interacoes import Interacoes
 
 pygame.init()
+pygame.mixer.init()
 
 
 # ... tela ...
@@ -34,15 +36,17 @@ for y in range(0, tela.get_height(), 40):
 zombie1 = Zombie(200,240)
 survivor = Survivor(400,120)
 
+
+# ... musica de fundo ...
+som = pygame.mixer.Sound('scavengers_music.aif')
+som.set_volume(0.1)
+audio = False
+# ... .... ...... ....
+
 # ... loop principal ...
 while True:
 
-	# ... fechando a janela ...
-	for event in pygame.event.get():
-		if event.type == pygame.QUIT:
-			pygame.quit()
-			sys.exit()
-	# ... ...
+	Interacoes(tela,survivor)
 
 	tela.fill([0,0,0])
 	
@@ -54,3 +58,7 @@ while True:
 	pygame.display.flip() #update screen
 	clock.tick(FPS)
 	total_frames += 1
+
+	if audio == False:
+		som.play(-1)
+		audio = True
