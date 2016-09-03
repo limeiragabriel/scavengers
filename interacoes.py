@@ -11,7 +11,7 @@ def Interacoes(tela, survivor):
 			sys.exit()
 	# ... .... .... .... ...
 
-		if event.type == pygame.KEYDOWN and canmove:
+		if event.type == pygame.KEYDOWN:
 			
 			if event.key == pygame.K_w:
 				proxTile = survivor.get_number() - Tile.V

@@ -1,4 +1,12 @@
-import pygame, text
+import pygame, text, os
+import random
+
+invalidTile = ['invalid01.png','invalid02.png','invalid03.png','invalid04.png',
+				'invalid05.png','invalid06.png','invalid07.png','invalid08.png',
+				'invalid09.png','invalid10.png','invalid11.png']
+
+tileId = random.randint(0,10)
+
 
 class Tile(pygame.Rect):
 
@@ -9,14 +17,18 @@ class Tile(pygame.Rect):
 
 	def __init__(self, x, y, Type):
 
-		self.type = Type
+		self.Type = Type
 		self.number = Tile.total_tiles
+		# ...
+		self.idTile = random.randint(0,10)
+		# ...
 		Tile.total_tiles += 1
 
 		if Type == 'vazio':
 			self.walkable = True
 		else:
 			self.walkable = False
+
 
 		pygame.Rect.__init__(self, (x,y), (Tile.largura, Tile.altura))
 
@@ -30,9 +42,14 @@ class Tile(pygame.Rect):
 
 	@staticmethod
 	def draw_tiles(tela):
+
 		for tile in Tile.Lista:
 
-			if tile.type != 'vazio':
-				pygame.draw.rect(tela, [40,40,40], tile)
+			caminho = os.path.join("tileset", invalidTile[tile.idTile])
+			tileInv = pygame.image.load(caminho).convert_alpha()
+
+			if tile.Type != 'vazio':
+				tela.blit(tileInv,tile)
 
 			text.ExibirTexto(tela,tile.number, tile.x, tile.y)
+

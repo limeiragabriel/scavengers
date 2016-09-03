@@ -1,5 +1,5 @@
 import pygame, sys
-from tile import Tile
+from tile import *
 from charactersC import *
 from interacoes import Interacoes
 
@@ -39,10 +39,11 @@ survivor = Survivor(400,120)
 
 # ... musica de fundo ...
 som = pygame.mixer.Sound('scavengers_music.aif')
-som.set_volume(0.1)
+som.set_volume(0.5)
 audio = False
 # ... .... ...... ....
 
+generate = True
 # ... loop principal ...
 while True:
 
