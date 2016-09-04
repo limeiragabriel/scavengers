@@ -1,7 +1,8 @@
 import pygame, sys
 from tile import *
 from charactersC import *
-from interacoes import Interacoes
+from interacoes import *
+from gameManager import *
 
 pygame.init()
 pygame.mixer.init()
@@ -16,26 +17,12 @@ clock = pygame.time.Clock()
 FPS = 30
 total_frames = 0
 
-# ... tiles onde o player nao pode andar ...
-invalidos = (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
-			21,40,41,60,61,80,81,100,101,120,121,140,141,160,
-			161,180,181,200,201,220,221,240,241,260,261,280,
-			281,282,283,284,285,286,287,288,289,290,291,292,293,
-			294,295,296,297,298,299,300)
-
-
-# definindo onde sera cada tile valido e invalido
-for y in range(0, tela.get_height(), 40):
-	for x in range(0, tela.get_width(), 40):
-		if Tile.total_tiles in invalidos:
-			Tile(x, y, 'solido')
-		else:
-			Tile(x, y, 'vazio')
-
+# tiles invalidos ao redor do cenario
+invalidTiles(tela)
+# ................................
 
 zombie1 = Zombie(200,240)
 survivor = Survivor(40,520)
-
 
 # ... musica de fundo ...
 som = pygame.mixer.Sound('scavengers_music.aif')
@@ -43,20 +30,19 @@ audio = False
 # ... .... ...... ....
 
 # randomiza as variaveis para gerar o terreno
-generateLevel = True
+LevelAtual = 1
 
 # ... loop principal ...
 while True:
 
-	Interacoes(tela,survivor)
+	QuitGame()
+	MovePlayer(tela,survivor,zombie1)
 
 	tela.fill([0,0,0])
 	
-	#verifica se o nivel deve ser gerado ou player nao passou de fase
-	if generateLevel:
-		Tile.refresh()
-		generateLevel = False
-	# .... .... .... .... ....
+	if nextLevel(survivor):
+		survivor = Survivor(40,520)
+		LevelAtual += 1
 
 	Tile.draw_tiles(tela)
 

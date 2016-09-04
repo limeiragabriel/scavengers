@@ -1,7 +1,5 @@
 import pygame
 
-
-# nao sei como funcionou entao melhor nao mexer kkkkkkk
 def ExibirTexto(tela, texto, x, y, size = 15, color = (255,255,255), font_type = 'PressStart2P-Regular.ttf'):
 
 	try:
