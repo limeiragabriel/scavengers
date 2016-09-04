@@ -34,16 +34,17 @@ for y in range(0, tela.get_height(), 40):
 
 
 zombie1 = Zombie(200,240)
-survivor = Survivor(400,120)
+survivor = Survivor(40,520)
 
 
 # ... musica de fundo ...
 som = pygame.mixer.Sound('scavengers_music.aif')
-som.set_volume(0.5)
 audio = False
 # ... .... ...... ....
 
-generate = True
+# randomiza as variaveis para gerar o terreno
+generateLevel = True
+
 # ... loop principal ...
 while True:
 
@@ -51,6 +52,12 @@ while True:
 
 	tela.fill([0,0,0])
 	
+	#verifica se o nivel deve ser gerado ou player nao passou de fase
+	if generateLevel:
+		Tile.refresh()
+		generateLevel = False
+	# .... .... .... .... ....
+
 	Tile.draw_tiles(tela)
 
 	survivor.draw(tela)
@@ -59,6 +66,7 @@ while True:
 	pygame.display.flip() #update screen
 	clock.tick(FPS)
 	total_frames += 1
+
 
 	if audio == False:
 		som.play(-1)
