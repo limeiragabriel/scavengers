@@ -16,19 +16,19 @@ def MovePlayer(tela, survivor, zombie):
 				if Tile.get_tile(proxTile).walkable and proxTile != zombieTile:
 					survivor.y -= survivor.altura
 
-			if event.key == pygame.K_s:
+			elif event.key == pygame.K_s:
 				proxTile = survivor.get_number() + Tile.V
 
 				if Tile.get_tile(proxTile).walkable and proxTile != zombieTile:
 					survivor.y += survivor.altura
 			
-			if event.key == pygame.K_a:
+			elif event.key == pygame.K_a:
 				proxTile = survivor.get_number() - Tile.H
 
 				if Tile.get_tile(proxTile).walkable and proxTile != zombieTile:
 					survivor.x -= survivor.largura
 
-			if event.key == pygame.K_d:
+			elif event.key == pygame.K_d:
 				proxTile = survivor.get_number() + Tile.H
 
 				if Tile.get_tile(proxTile).walkable and proxTile != zombieTile:

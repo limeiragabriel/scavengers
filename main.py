@@ -18,7 +18,7 @@ FPS = 30
 total_frames = 0
 
 # tiles invalidos ao redor do cenario
-invalidTiles(tela)
+TilesLaterais(tela)
 # ................................
 
 
@@ -46,6 +46,7 @@ while True:
 		LevelAtual += 1
 
 	Tile.draw_tiles(tela)
+	
 
 	survivor.draw(tela)
 	zombie1.draw(tela)

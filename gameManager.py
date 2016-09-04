@@ -1,9 +1,9 @@
-import pygame, sys
+import pygame, sys, random
 from charactersC import *
 from tile import Tile
 
-# tiles invalidos ao redor do cenario
-invalidos = (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
+# tiles ao redor do cenario
+laterais = (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
 			21,40,41,60,61,80,81,100,101,120,121,140,141,160,
 			161,180,181,200,201,220,221,240,241,260,261,280,
 			281,282,283,284,285,286,287,288,289,290,291,292,293,
@@ -26,13 +26,11 @@ def nextLevel(survivor):
 # ..............................
 
 # definindo onde sera cada tile valido e invalido
-def invalidTiles(tela):
+def TilesLaterais(tela):
 	for y in range(0, tela.get_height(), 40):
 		for x in range(0, tela.get_width(), 40):
-			if Tile.total_tiles in invalidos:
+			if Tile.total_tiles in laterais:
 				Tile(x, y, 'solido')
 			else:
 				Tile(x, y, 'vazio')
 # ................................................
-
-
