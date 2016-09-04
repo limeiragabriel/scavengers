@@ -1,11 +1,10 @@
 import pygame, text, os
 import random
 
-invalidTile = ['invalid01.png','invalid02.png','invalid03.png','invalid04.png',
-				'invalid05.png','invalid06.png','invalid07.png','invalid08.png',
-				'invalid09.png','invalid10.png','invalid11.png']
-
-pathTile = ['path01.png','path02.png','path03.png','path04.png',
+Tileset_ = ['invalid01.png','invalid02.png','invalid03.png','invalid04.png',
+			'invalid05.png','invalid06.png','invalid07.png','invalid08.png',
+			'invalid09.png','invalid10.png','invalid11.png',
+			'path01.png','path02.png','path03.png','path04.png',
 			'path05.png','path06.png','path07.png','path08.png']
 
 
@@ -23,7 +22,7 @@ class Tile(pygame.Rect):
 		
 		# Atribuindo um identificador aleatorio para definir o sprite de cada tile...
 		self.idTileInv = random.randint(0,10)
-		self.idTilePath = random.randint(0,7)
+		self.idTilePath = random.randint(11,17)
 		# ...
 
 		Tile.total_tiles += 1
@@ -42,7 +41,7 @@ class Tile(pygame.Rect):
 	def refresh():
 		for tile in Tile.Lista:
 			tile.idTileInv = random.randint(0,10)
-			tile.idTilePath = random.randint(0,7)
+			tile.idTilePath = random.randint(11,17)
 
 	@staticmethod
 	def get_tile(number):
@@ -55,10 +54,10 @@ class Tile(pygame.Rect):
 
 		for tile in Tile.Lista:
 
-			caminho = os.path.join("tileset", invalidTile[tile.idTileInv])
+			caminho = os.path.join("tileset", Tileset_[tile.idTileInv])
 			tileInv = pygame.image.load(caminho).convert_alpha()
 
-			caminho2 = os.path.join("tileset",pathTile[tile.idTilePath])
+			caminho2 = os.path.join("tileset",Tileset_[tile.idTilePath])
 			tilePath = pygame.image.load(caminho2).convert_alpha()
 
 			caminho3 = os.path.join("tileset","exit.png")

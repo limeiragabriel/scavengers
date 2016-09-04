@@ -21,7 +21,8 @@ total_frames = 0
 invalidTiles(tela)
 # ................................
 
-zombie1 = Zombie(200,240)
+
+zombie1 = Zombie(Tile.get_tile(126).x,Tile.get_tile(126).y)
 survivor = Survivor(40,520)
 
 # ... musica de fundo ...
