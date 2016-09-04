@@ -19,6 +19,7 @@ total_frames = 0
 
 # tiles invalidos ao redor do cenario
 TilesLaterais(tela)
+Tile.RecarregarAleatorios()
 # ................................
 
 
@@ -44,6 +45,7 @@ while True:
 	if nextLevel(survivor):
 		survivor = Survivor(40,520)
 		LevelAtual += 1
+		Tile.RecarregarAleatorios()
 
 	Tile.draw_tiles(tela)
 	

@@ -49,6 +49,18 @@ class Tile(pygame.Rect):
 		Tile.Lista.append(self)
 
 	@staticmethod
+	def RecarregarAleatorios():
+		for tile in Tile.Lista:
+
+			if tile.number in procedurais:
+				if tile.tipo_ == 0:
+					tile.Type = 'vazio'
+					tile.walkable = True
+				else:
+					tile.Type = 'solido'
+					tile.walkable = False
+
+	@staticmethod
 	def refresh():
 		for tile in Tile.Lista:
 			tile.idTileInv = random.randint(0,10)
@@ -63,15 +75,6 @@ class Tile(pygame.Rect):
 
 	@staticmethod
 	def draw_tiles(tela):
-
-		for tile in Tile.Lista:
-
-			if tile.number in procedurais:
-				if tile.tipo_ == 0:
-					tile.Type = 'vazio'
-				else:
-					tile.Type = 'solido'
-					tile.walkable = False
 
 		for tile in Tile.Lista:
 
