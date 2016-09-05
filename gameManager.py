@@ -18,22 +18,15 @@ def QuitGame():
 		sys.exit()
 # ........................
 
-def levelTransition(tela,LevelAtual):
-	tempo = 0
-	while tempo < 120:
-		tela.fill([0,0,0])
-		text.ExibirTexto(tela,'Day '+str(LevelAtual),50,100,30)
-		tempo += 1
-
-
 # avancar e gerar o proximo level
 def nextLevel(tela,survivor,LevelAtual):
 
 	tempo = 0
-	fundo = pygame.image.load("fundo.png")
+	clock = pygame.time.Clock()
 
-	while tempo < 120:
-		tela.blit(fundo,(0,0))
+	while tempo < 60:
+		clock.tick(30)
+		tela.fill([0,0,0])
 		text.ExibirTexto(tela,'Day '+str(LevelAtual),100,250,50)
 		tempo += 1
 		pygame.display.flip()
