@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys, text
 from tile import *
 from charactersC import *
 from interacoes import *
@@ -40,24 +40,23 @@ while True:
 	QuitGame()
 	MovePlayer(tela,survivor,zombie1)
 
-	tela.fill([0,0,0])
-	
-	if nextLevel(survivor):
-		survivor = Survivor(40,520)
-		LevelAtual += 1
-		Tile.RecarregarAleatorios()
-
 	Tile.draw_tiles(tela)
+	text.ExibirTexto(tela,'Day '+str(LevelAtual),20,10,15)
 	
-
 	survivor.draw(tela)
 	zombie1.draw(tela)
 
-	pygame.display.flip() #update screen
-	clock.tick(FPS)
-	total_frames += 1
+	if survivor.get_number() == 39:
+		LevelAtual += 1
+		nextLevel(tela,survivor,LevelAtual)
+		survivor = Survivor(40,520)
 
 
 	if audio == False:
 		som.play(-1)
 		audio = True
+
+	#pygame.display.set_caption('FPS %.2f' %(clock.get_fps()) )
+	pygame.display.flip() #update screen
+	clock.tick(FPS)
+	total_frames += 1
