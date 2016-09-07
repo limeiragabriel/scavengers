@@ -13,7 +13,8 @@ mini-projeto de pygame da disciplina de P1
   * display
   * inicio do game
   * fechar jogo
-* Movimentação de Tile à Tile
+* Classes sobrevivente e zumbi
+* Movimentação do player de Tile à Tile
 * adicionados sprites do cenario e dos personagens
 * inimigo basico (ainda sem comportamento, apenas testes de colisão)
 * "trilha sonora"
