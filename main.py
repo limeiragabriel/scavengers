@@ -31,26 +31,35 @@ som = pygame.mixer.Sound('scavengers_music.aif')
 audio = False
 # ... .... ...... ....
 
-# randomiza as variaveis para gerar o terreno
 LevelAtual = 1
+
+playerHealth = PlayerHealth()
+
+# mostrar o primeiro dia /// tirar quando implementar o menu
+nextLevel(tela,survivor,LevelAtual)
 
 # ... loop principal ...
 while True:
 
-	QuitGame()
-	MovePlayer(tela,survivor,zombie1)
-
-	Tile.draw_tiles(tela)
-	text.ExibirTexto(tela,'Day '+str(LevelAtual),20,10,15)
-	
-	survivor.draw(tela)
-	zombie1.draw(tela)
+	if playerHealth.healthAmount <= 0:
+		som.stop()
+		GameOver(tela,LevelAtual)
 
 	if survivor.get_number() == 39:
 		LevelAtual += 1
 		nextLevel(tela,survivor,LevelAtual)
 		survivor = Survivor(40,520)
 
+	CloseWindow()
+	MovePlayer(tela,survivor, zombie1)
+
+	Tile.draw_tiles(tela)
+
+	text.ExibirTexto(tela,'Day '+str(LevelAtual),20,10,15)
+	playerHealth.displayHealth(tela)
+
+	survivor.draw(tela)
+	zombie1.draw(tela)
 
 	if audio == False:
 		som.play(-1)

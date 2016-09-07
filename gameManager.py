@@ -1,5 +1,5 @@
 import pygame, sys, random, text
-from charactersC import *
+#from charactersC import *
 from tile import Tile
 
 # tiles ao redor do cenario
@@ -11,7 +11,7 @@ laterais = (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
 # ..................................
 
 # fechar a janela do game
-def QuitGame():
+def CloseWindow():
 	close = pygame.event.get(pygame.QUIT)
 	if close:
 		pygame.quit()
@@ -35,6 +35,22 @@ def nextLevel(tela,survivor,LevelAtual):
 	Tile.RecarregarAleatorios()
 # ..............................
 
+def GameOver(tela,LevelAtual):
+	clock = pygame.time.Clock()
+
+	if LevelAtual > 1:
+		texto = ' Days You Starved.'
+	else:
+		texto = ' Day You Starved.'
+
+	while True:
+		CloseWindow()
+		clock.tick(30)
+		tela.fill([0,0,0])
+		text.ExibirTexto(tela,'After ' +str(LevelAtual) + texto,100,250,15)
+		pygame.display.flip()
+
+
 # definindo onde sera cada tile valido e invalido
 def TilesLaterais(tela):
 	for y in range(0, tela.get_height(), 40):
@@ -44,3 +60,5 @@ def TilesLaterais(tela):
 			else:
 				Tile(x, y, 'vazio')
 # ................................................
+
+
