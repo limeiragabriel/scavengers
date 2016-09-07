@@ -6,8 +6,9 @@ mini-projeto de pygame da disciplina de P1
 - python 2.7
 - pygame
 
-### 07/09/2016
+### 29/08/2016 até 07/09/2016
 
+* inicio do projeto
 * basico
   * display
   * inicio do game
