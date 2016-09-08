@@ -19,13 +19,13 @@ class Character(pygame.Rect):
 	def get_tile(self):
 		return Tile.get_tile(self.get_number)
 
-## "controles" para quadros da animacao dos sprites
+#=============="controles" para quadros da animacao dos sprites======================
 a = 0
 b = 0
 largura = 40
 altura = 40
 frame = 0.0
-##=========================
+##===================================================================================
 
 class Zombie(Character):
 

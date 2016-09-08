@@ -32,25 +32,43 @@ class Tile(pygame.Rect):
 		
 		# Atribuindo um identificador aleatorio para definir o sprite de cada tile...
 		self.idTileInv = random.randint(0,10)
-		self.idTilePath = random.randint(11,17)
+		#self.idTilePath = random.randint(11,17)
 		self.tipo_ = random.randint(0,1)
 		# ...
 
 		Tile.total_tiles += 1
 
 		if Type == 'vazio':
-			self.walkable = True
+			self.walkable = True   # tiles onde se pode andar
 		else:
-			self.walkable = False
+			self.walkable = False  # tiles onde NAO	se pode andar
 
 
 		pygame.Rect.__init__(self, (x,y), (Tile.largura, Tile.altura))
 
 		Tile.Lista.append(self)
 
+	# ================ unido ao refresh =============
+	#@staticmethod
+	#def RecarregarAleatorios():
+	#	for tile in Tile.Lista:
+
+	#		if tile.number in procedurais:
+	#			if tile.tipo_ == 0:
+	#				tile.Type = 'vazio'
+	#				tile.walkable = True
+	#			else:
+	#				tile.Type = 'solido'
+	#				tile.walkable = False
+
+
+	# ======= "recarrega" os tiles para gerar um novo cenario aleatorio ==========
 	@staticmethod
-	def RecarregarAleatorios():
+	def refresh():
 		for tile in Tile.Lista:
+			tile.idTileInv = random.randint(0,10)
+			#tile.idTilePath = random.randint(11,17)
+			tile.tipo_ = random.randint(0,1)
 
 			if tile.number in procedurais:
 				if tile.tipo_ == 0:
@@ -59,19 +77,15 @@ class Tile(pygame.Rect):
 				else:
 					tile.Type = 'solido'
 					tile.walkable = False
+	# ============================================================================
 
-	@staticmethod
-	def refresh():
-		for tile in Tile.Lista:
-			tile.idTileInv = random.randint(0,10)
-			tile.idTilePath = random.randint(11,17)
-			tile.tipo_ = random.randint(0,1)
-
+	# ===== retorna o numero do tile de acordo com sua posicao na tela ===========
 	@staticmethod
 	def get_tile(number):
 		for tile in Tile.Lista:
 			if tile.number == number:
 				return tile
+	# ============================================================================
 
 	@staticmethod
 	def draw_tiles(tela):
@@ -92,12 +106,14 @@ class Tile(pygame.Rect):
 
 				tela.blit(exit_,tile)
 
-			elif tile.Type == 'vazio':
+			# desenha todas as tiles do chao validas (exigia muito processamento)
 
-				caminho2 = os.path.join("tileset",Tileset_[tile.idTilePath])
-				tilePath = pygame.image.load(caminho2).convert_alpha()
+			#elif tile.Type == 'vazio':
 
-				tela.blit(tilePath,tile)
+			#	caminho2 = os.path.join("tileset",Tileset_[tile.idTilePath])
+			#	tilePath = pygame.image.load(caminho2).convert_alpha()
+
+			#	tela.blit(tilePath,tile)
 
 			#text.ExibirTexto(tela,tile.number, tile.x, tile.y)
 
