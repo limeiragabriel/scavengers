@@ -28,3 +28,4 @@ mini-projeto de pygame da disciplina de P1
 * adicionado Game Over ao alcançar 0 de energia
 * alteração na função draw_tiles para melhorar desenpenho do jogo
 * implementação da classe Color para facilitar codificação
+* animação de Idle do player e do zumbi adicionadas
