@@ -29,3 +29,8 @@ mini-projeto de pygame da disciplina de P1
 * alteração na função draw_tiles para melhorar desenpenho do jogo
 * implementação da classe Color para facilitar codificação
 * animação de Idle do player e do zumbi adicionadas
+
+### 08/09/2016
+
+* melhora na organização e comentarios no código
+* melhora na eficiencia do codigo (chegando a dobrar o desempenho em fps em relação a versões anteriores)
