@@ -13,11 +13,13 @@ mini-projeto de pygame da disciplina de P1
   * display
   * inicio do game
   * fechar jogo
+* Classe Tiles (definindo cada 'célula' correspondente dentro da tela)
 * Classes sobrevivente e zumbi
 * Movimentação do player de Tile à Tile
 * adicionados sprites do cenario e dos personagens
 * inimigo basico (ainda sem comportamento, apenas testes de colisão)
 * "trilha sonora"
+* identificadores nos Tiles para definir sprites de areas "validas e invalidas"
 * Todos os cenários já são gerados de maneira aleatória
 * Mudança de cenario ao chegar na saida ("Exit")
 * exibição de informações na tela (textos como dia atual, vida e de transição)
