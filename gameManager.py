@@ -1,5 +1,4 @@
 import pygame, sys, random, text
-#from charactersC import *
 from tile import Tile
 
 # tiles ao redor do cenario

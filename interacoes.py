@@ -1,12 +1,14 @@
 import pygame, sys, text
 from tile import Tile
+from colors import Color
 
 class PlayerHealth():
 
 	healthAmount = 100
 
 	def displayHealth(self,tela):
-		text.ExibirTexto(tela,str(self.healthAmount),20,100,15)
+		text.ExibirTexto(tela,'Food:',320,10,15)
+		text.ExibirTexto(tela,str(self.healthAmount),400,10,15, Color.DarkRed)
 
 
 def MovePlayer(tela, survivor, zombie):

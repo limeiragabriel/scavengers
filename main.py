@@ -65,7 +65,7 @@ while True:
 		som.play(-1)
 		audio = True
 
-	#pygame.display.set_caption('FPS %.2f' %(clock.get_fps()) )
+	pygame.display.set_caption('FPS %.2f' %(clock.get_fps()) )
 	pygame.display.flip() #update screen
 	clock.tick(FPS)
 	total_frames += 1

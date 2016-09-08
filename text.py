@@ -1,6 +1,7 @@
 import pygame,os
+from colors import Color
 
-def ExibirTexto(tela, texto, x, y, size = 15, color = (255,255,255), font_type = os.path.join("PressStart2P-Regular.ttf")):
+def ExibirTexto(tela, texto, x, y, size = 15, color = Color.White, font_type = os.path.join("PressStart2P-Regular.ttf")):
 
 	try:
 		texto = str(texto)

@@ -78,22 +78,25 @@ class Tile(pygame.Rect):
 
 		for tile in Tile.Lista:
 
-			caminho = os.path.join("tileset", Tileset_[tile.idTileInv])
-			tileInv = pygame.image.load(caminho).convert_alpha()
-
-			caminho2 = os.path.join("tileset",Tileset_[tile.idTilePath])
-			tilePath = pygame.image.load(caminho2).convert_alpha()
-
-			caminho3 = os.path.join("tileset","exit.png")
-			exit_ = pygame.image.load(caminho3).convert_alpha()
-
 			if tile.Type != 'vazio':
+
+				caminho = os.path.join("tileset", Tileset_[tile.idTileInv])
+				tileInv = pygame.image.load(caminho).convert_alpha()
+
 				tela.blit(tileInv,tile)
 
 			elif tile.number == 39:
+
+				caminho3 = os.path.join("tileset","exit.png")
+				exit_ = pygame.image.load(caminho3).convert_alpha()
+
 				tela.blit(exit_,tile)
 
 			elif tile.Type == 'vazio':
+
+				caminho2 = os.path.join("tileset",Tileset_[tile.idTilePath])
+				tilePath = pygame.image.load(caminho2).convert_alpha()
+
 				tela.blit(tilePath,tile)
 
 			#text.ExibirTexto(tela,tile.number, tile.x, tile.y)
