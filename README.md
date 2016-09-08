@@ -52,4 +52,4 @@ Vocẽ está na pele de um sobrevivente do apocalipse zumbi em um mundo totalmen
 * melhora na organização e comentarios no código
 * melhora na eficiencia do codigo (chegando a dobrar o desempenho em fps em relação a versões anteriores)
 * sistema de dano ao se aproximar do inimigo
-* melora na identificação da posição dos zumbis para colisao
+* melhora na identificação da posição dos zumbis para colisao
