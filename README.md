@@ -1,6 +1,7 @@
 #scavengers
 
 página: https://limeiragabriel.github.io/scavengers/
+repositório: https://github.com/limeiragabriel/scavengers
 
 ## descrição
 mini-projeto de pygame da disciplina de P1 - desenvolvimento em python
