@@ -34,3 +34,5 @@ mini-projeto de pygame da disciplina de P1
 
 * melhora na organização e comentarios no código
 * melhora na eficiencia do codigo (chegando a dobrar o desempenho em fps em relação a versões anteriores)
+* sistema de dano ao se aproximar do inimigo
+* melora na identificação da posição dos zumbis para colisao
