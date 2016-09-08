@@ -53,6 +53,7 @@ while True:
 	CloseWindow()
 	MovePlayer(tela,survivor, zombie1)
 
+	tela.fill((0,0,0))
 	Tile.draw_tiles(tela)
 
 	text.ExibirTexto(tela,'Day '+str(LevelAtual),20,10,15)

@@ -1,5 +1,6 @@
 import pygame, sys, random, text
 from tile import Tile
+from colors import Color
 
 # tiles ao redor do cenario
 laterais = (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
@@ -60,4 +61,11 @@ def TilesLaterais(tela):
 				Tile(x, y, 'vazio')
 # ................................................
 
+class PlayerHealth():
+
+	healthAmount = 100
+
+	def displayHealth(self,tela):
+		text.ExibirTexto(tela,'Food:',320,10,15)
+		text.ExibirTexto(tela,str(self.healthAmount),400,10,15, Color.DarkRed)
 

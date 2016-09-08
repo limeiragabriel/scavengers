@@ -1,4 +1,4 @@
-import pygame
+import pygame, os
 from tile import Tile
 
 class Character(pygame.Rect):
@@ -19,6 +19,14 @@ class Character(pygame.Rect):
 	def get_tile(self):
 		return Tile.get_tile(self.get_number)
 
+## "controles" para quadros da animacao dos sprites
+a = 0
+b = 0
+largura = 40
+altura = 40
+frame = 0.0
+##=========================
+
 class Zombie(Character):
 
 	Lista = []
@@ -28,9 +36,23 @@ class Zombie(Character):
 		Zombie.Lista.append(self)
 
 	def draw(self,tela):
+
+		global a,b,largura,altura,frame
+
+		caminho = os.path.join('tileset','zombie_idle.png')
+
+		if frame >= 1.0:
+			a += 40
+			frame = 0.0
+
+		frame += 0.1
+
+		if a >= (40 * 6):
+			a = 0
+
 		for zombie in Zombie.Lista:
-			zombie = pygame.image.load("zombie1.png").convert_alpha()
-			tela.blit(zombie,(self.x, self.y))
+			zombie = pygame.image.load(caminho).convert_alpha()
+			tela.blit(zombie,(self.x, self.y),(a,b,largura,altura))
 
 class Survivor(Character):
 
@@ -38,5 +60,18 @@ class Survivor(Character):
 		Character.__init__(self, x, y)
 
 	def draw(self,tela):
-		character = pygame.image.load("survivor.png").convert_alpha()
-		tela.blit(character,(self.x, self.y))
+		global a,b,largura,altura,frame
+
+		if frame >= 1.0:
+			a += 40
+			frame = 0.0
+
+		frame += 0.1
+
+		if a >= (40 * 6):
+			a = 0
+
+		caminho = os.path.join('tileset','player_idle.png')
+		character = pygame.image.load(caminho).convert_alpha()
+
+		tela.blit(character,(self.x, self.y),(a,b,largura,altura))
