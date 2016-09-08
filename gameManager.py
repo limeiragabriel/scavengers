@@ -1,6 +1,7 @@
 import pygame, sys, random, text
 from tile import Tile
 from colors import Color
+from charactersC import Zombie
 
 # =============== tiles ao redor do cenario =======================
 laterais = (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
@@ -71,4 +72,12 @@ class PlayerHealth():
 		text.ExibirTexto(tela,'Food:',320,10,15)
 		text.ExibirTexto(tela,str(self.healthAmount),400,10,15, Color.DarkRed)
 # ============================================================================
+
+# =================== Tiles onde estao os zumbis ==============================
+def zombieTile():
+	for zombie in Zombie.Lista:
+		for tile in Tile.Lista:
+			if tile.number == zombie.get_number():
+				tile.walkable = False
+# =============================================================================
 

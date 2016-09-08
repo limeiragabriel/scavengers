@@ -25,22 +25,27 @@ TilesLaterais(tela)
 # ========================================================================
 
 # ========= tiles do Back ground =========================================
-caminho = os.path.join("tileset", "GroundTiles.png")
+caminho = os.path.join("tileset", "DirtGround.png")
 ground = pygame.image.load(caminho).convert_alpha()
 # ========================================================================
 
-
+# =================== personagens ========================================
 zombie1 = Zombie(Tile.get_tile(126).x,Tile.get_tile(126).y)
+
+zombie2 = Zombie(Tile.get_tile(146).x,Tile.get_tile(146).y)
+
 survivor = Survivor(40,520)
+# ========================================================================
 
 # ======================= musica de fundo ================================
 som = pygame.mixer.Sound('scavengers_music.aif')
 audio = False
 # ========================================================================
 
+# ======================== dia atual e energia ===========================
 LevelAtual = 1
-
 playerHealth = PlayerHealth()
+# ========================================================================
 
 # mostrar o primeiro dia /// tirar quando implementar o menu
 nextLevel(tela,survivor,LevelAtual)
@@ -63,13 +68,19 @@ while True:
 
 	CloseWindow()
 
-	MovePlayer(tela,survivor, zombie1)
+	if GetHit(survivor):
+		playerHealth.healthAmount -= 10
+
+	
+
+	MovePlayer(survivor)
 
 	tela.fill((0,0,0))
 	
 	tela.blit(ground,(0,0))
 
 	Tile.draw_tiles(tela)
+	zombieTile()
 
 	# ======================== HUD =========================================
 	text.ExibirTexto(tela,'Day '+str(LevelAtual),20,10,15)
@@ -78,6 +89,8 @@ while True:
 
 	survivor.draw(tela)
 	zombie1.draw(tela)
+
+	zombie2.draw(tela)
 
 	# ====================== inicia a musica de fundo ======================
 	if audio == False:

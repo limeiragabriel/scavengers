@@ -87,6 +87,7 @@ class Tile(pygame.Rect):
 				return tile
 	# ============================================================================
 
+	# ====================== desenha os tiles do cenario =========================
 	@staticmethod
 	def draw_tiles(tela):
 
@@ -99,12 +100,12 @@ class Tile(pygame.Rect):
 
 				tela.blit(tileInv,tile)
 
-			elif tile.number == 39:
+			#elif tile.number == 39:
 
-				caminho3 = os.path.join("tileset","exit.png")
-				exit_ = pygame.image.load(caminho3).convert_alpha()
+			#	caminho3 = os.path.join("tileset","exit.png")
+			#	exit_ = pygame.image.load(caminho3).convert_alpha()
 
-				tela.blit(exit_,tile)
+			#	tela.blit(exit_,tile)
 
 			# desenha todas as tiles do chao validas (exigia muito processamento)
 
@@ -116,4 +117,3 @@ class Tile(pygame.Rect):
 			#	tela.blit(tilePath,tile)
 
 			#text.ExibirTexto(tela,tile.number, tile.x, tile.y)
-
