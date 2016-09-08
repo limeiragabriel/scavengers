@@ -1,5 +1,22 @@
 #scavengers
-mini-projeto de pygame da disciplina de P1
+
+## descrição
+mini-projeto de pygame da disciplina de P1 - desenvolvimento em python
+
+* A ideia:
+
+Scavengers é um Rogue-Like baseado no game original feito na unity em C# e distribuido na asset store gratuitamente para estudo. Agora "reinventado" em pygame como projeto da disciplina de Programação 1.
+
+* Sobre o gênero do jogo:
+
+Roguelike é um subgênero de jogos RPG, caracterizado pela geração de level aleatória durante a partida, mapa baseado em tile e permanent death. Jogos deste gênero são descendentes do jogo original Rogue, de 1980, particularmente espelhando-se no quesito de gráficos ASCII ou Sprite, gameplay baseado em turnos, e narrativa high fantasy.
+
+mais sobre o gênero: https://pt.wikipedia.org/wiki/Roguelike
+
+* A história:
+
+Vocẽ está na pele de um sobrevivente do apocalipse zumbi em um mundo totalmente devastado e com escassez de recursos, onde o objetivo é sobreviver o máximo de dias possiveis enquanro coleta recursos para isso e escapa dos monstros.
+
 
 ##implementações
 
