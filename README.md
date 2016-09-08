@@ -24,3 +24,5 @@ mini-projeto de pygame da disciplina de P1
 * Tela de transição entre cenários com contador de "dias" passados no game
 * Vida/Fome do player descontada a cada movimento
 * adicionado Game Over ao alcançar 0 de energia
+* alteração na função draw_tiles para melhorar desenpenho do jogo
+* implementação da classe Color para facilitar codificação
