@@ -1,4 +1,4 @@
-import pygame, sys, text
+import pygame, sys, text,random
 from tile import Tile
 from gameManager import PlayerHealth
 from charactersC import Zombie
@@ -68,3 +68,51 @@ def GetHit(survivor):
 			return True
 	# ==================================================================================================
 # ======================================================================================================
+
+def MoveZombie():
+
+	for zombie in Zombie.Lista:
+
+		move = random.randint(0,1)
+		direction = random.randint(0,3)
+
+		U_Tile = zombie.get_number() - Tile.V #Tile superior
+		D_Tile = zombie.get_number() + Tile.V #Tile inferior
+		L_Tile = zombie.get_number() - Tile.H #Tile Lateral Esquerda
+		R_Tile = zombie.get_number() + Tile.H #Tile Lateral Direita
+
+		if move == 0:
+			pass
+		else:
+			if direction == 0:
+				
+				proxTile = zombie.get_number() - Tile.V
+
+				if Tile.get_tile(proxTile).walkable:
+					zombie.y -= zombie.altura
+
+			elif direction == 1:
+				
+				proxTile = zombie.get_number() + Tile.V
+
+				if Tile.get_tile(proxTile).walkable:
+					zombie.y += zombie.altura
+
+			elif direction == 2:
+				
+				proxTile = zombie.get_number() - Tile.H
+
+				if Tile.get_tile(proxTile).walkable:
+					zombie.x -= zombie.largura
+
+			elif direction == 3:
+				
+				proxTile = zombie.get_number() + Tile.H
+
+				if Tile.get_tile(proxTile).walkable:
+					zombie.x += zombie.largura
+
+
+
+
+

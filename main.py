@@ -75,6 +75,8 @@ while True:
 
 	MovePlayer(survivor)
 
+	MoveZombie()
+
 	tela.fill((0,0,0))
 	
 	tela.blit(ground,(0,0))

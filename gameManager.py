@@ -75,9 +75,18 @@ class PlayerHealth():
 
 # =================== Tiles onde estao os zumbis ==============================
 def zombieTile():
+
+	currentTiles = [] # posicao atual de cada zumbi
+
+	# ================== torna a posicao do zumbi inacessivel ao player ========
 	for zombie in Zombie.Lista:
 		for tile in Tile.Lista:
 			if tile.number == zombie.get_number():
 				tile.walkable = False
-# =============================================================================
+				currentTiles.append(tile)
 
+	# ================= verifica se o zumbi ainda esta no msm tile ============
+	for tile in currentTiles:
+		if tile.number not in Zombie.Lista:
+			tile.walkable = True     # torna o tile acessivel caso nao haja mais zumbis
+# =============================================================================
