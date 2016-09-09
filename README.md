@@ -56,3 +56,9 @@ Vocẽ está na pele de um sobrevivente do apocalipse zumbi em um mundo totalmen
 * melhora na eficiencia do codigo (chegando a dobrar o desempenho em fps em relação a versões anteriores)
 * sistema de dano ao se aproximar do inimigo
 * melhora na identificação da posição dos zumbis para colisao
+
+### 09/09/2016
+
+* Movimentação dos zumbis pelo cenario
+* tiles com passagem bloqueada para o player quando o zumbi estiver
+* correção dos tiles que permaneciam bloqueados msm depois do zubi sair
