@@ -61,4 +61,9 @@ Vocẽ está na pele de um sobrevivente do apocalipse zumbi em um mundo totalmen
 
 * Movimentação dos zumbis pelo cenario
 * tiles com passagem bloqueada para o player quando o zumbi estiver
-* correção dos tiles que permaneciam bloqueados msm depois do zubi sair
+* movimentação baseada em turnos implementada
+* coreeção dos seguintes bugs:
+  * tiles onde os zumbis passaram permanecem invalidos mesmo vazios
+  * depois de levar o primeiro hit do zumbi o player não gasta mais energia ao andar pelo cenario
+  * zumbis atravessam player e vice-versa
+  * zumbis se atravessam
