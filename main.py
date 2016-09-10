@@ -45,6 +45,10 @@ audio = False
 # ======================== dia atual e energia ===========================
 LevelAtual = 1
 playerHealth = PlayerHealth()
+ControleDeTurno = Turnos()
+
+
+listaDeTiles = []
 # ========================================================================
 
 # mostrar o primeiro dia /// tirar quando implementar o menu
@@ -68,21 +72,22 @@ while True:
 
 	CloseWindow()
 
-	if GetHit(survivor):
-		playerHealth.healthAmount -= 10
+	PosicaoDeZumbi(listaDeTiles)
 
-	
-
-	MovePlayer(survivor)
-
-	MoveZombie()
+	if ControleDeTurno.playerTurn:
+		MovePlayer(survivor)
+	else:
+		GetHit(survivor)
+		MoveZombie(survivor)
 
 	tela.fill((0,0,0))
 	
 	tela.blit(ground,(0,0))
 
 	Tile.draw_tiles(tela)
-	zombieTile()
+
+	AttPosicaoDeZumbi(listaDeTiles)
+	listaDeTiles = []
 
 	# ======================== HUD =========================================
 	text.ExibirTexto(tela,'Day '+str(LevelAtual),20,10,15)

@@ -1,6 +1,7 @@
 import pygame, sys, text,random
 from tile import Tile
 from gameManager import PlayerHealth
+from gameManager import Turnos
 from charactersC import Zombie
 
 # ================= movimentacao do personagem =======================
@@ -15,6 +16,10 @@ def MovePlayer(survivor):
 				proxTile = survivor.get_number() - Tile.V
 				# ========== descontar energia pelo movimento =============
 				PlayerHealth.healthAmount -= 1
+
+				# ========= ao tentar realizar movimento o turno muda =====
+				Turnos.playerTurn = False
+
 				# ================== mover para cima ========================= 
 				if Tile.get_tile(proxTile).walkable:
 					survivor.y -= survivor.altura
@@ -25,6 +30,10 @@ def MovePlayer(survivor):
 				proxTile = survivor.get_number() + Tile.V
 				# ========== descontar energia pelo movimento =============
 				PlayerHealth.healthAmount -= 1
+
+				# ========= ao tentar realizar movimento o turno muda =====
+				Turnos.playerTurn = False
+
 				# ================== mover para baixo =========================
 				if Tile.get_tile(proxTile).walkable:
 					survivor.y += survivor.altura
@@ -35,6 +44,10 @@ def MovePlayer(survivor):
 				proxTile = survivor.get_number() - Tile.H
 				# ========== descontar energia pelo movimento =============
 				PlayerHealth.healthAmount -= 1
+
+				# ========= ao tentar realizar movimento o turno muda =====
+				Turnos.playerTurn = False
+
 				# ================== mover para besquerda ====================
 				if Tile.get_tile(proxTile).walkable:
 					survivor.x -= survivor.largura
@@ -45,6 +58,9 @@ def MovePlayer(survivor):
 				proxTile = survivor.get_number() + Tile.H
 				# ========== descontar energia pelo movimento =============
 				PlayerHealth.healthAmount -= 1
+
+				# ========= ao tentar realizar movimento o turno muda =====
+				Turnos.playerTurn = False
 				# ================== mover para direita ====================
 				if Tile.get_tile(proxTile).walkable:
 					survivor.x += survivor.largura
@@ -65,53 +81,59 @@ def GetHit(survivor):
 	for zombie in Zombie.Lista:
 
 		if (U_Tile == zombie.get_number()) or (D_Tile == zombie.get_number()) or (L_Tile == zombie.get_number()) or (R_Tile == zombie.get_number()):
-			return True
+			PlayerHealth.healthAmount -= 10
 	# ==================================================================================================
 # ======================================================================================================
 
-def MoveZombie():
+def MoveZombie(survivor):
 
 	for zombie in Zombie.Lista:
 
 		move = random.randint(0,1)
-		direction = random.randint(0,3)
-
-		U_Tile = zombie.get_number() - Tile.V #Tile superior
-		D_Tile = zombie.get_number() + Tile.V #Tile inferior
-		L_Tile = zombie.get_number() - Tile.H #Tile Lateral Esquerda
-		R_Tile = zombie.get_number() + Tile.H #Tile Lateral Direita
 
 		if move == 0:
-			pass
+			Turnos.playerTurn = True
+
 		else:
+			
+			direction = random.randint(0,3)
+
+			U_Tile = zombie.get_number() - Tile.V #Tile superior
+			D_Tile = zombie.get_number() + Tile.V #Tile inferior
+			L_Tile = zombie.get_number() - Tile.H #Tile Lateral Esquerda
+			R_Tile = zombie.get_number() + Tile.H #Tile Lateral Direita
+
+			tiledoplayer = survivor.get_number()  #Tile onde o player esta
+
 			if direction == 0:
 				
 				proxTile = zombie.get_number() - Tile.V
 
-				if Tile.get_tile(proxTile).walkable:
+				if Tile.get_tile(proxTile).walkable and proxTile != tiledoplayer:
 					zombie.y -= zombie.altura
 
 			elif direction == 1:
 				
 				proxTile = zombie.get_number() + Tile.V
 
-				if Tile.get_tile(proxTile).walkable:
+				if Tile.get_tile(proxTile).walkable and proxTile != tiledoplayer:
 					zombie.y += zombie.altura
 
 			elif direction == 2:
 				
 				proxTile = zombie.get_number() - Tile.H
 
-				if Tile.get_tile(proxTile).walkable:
+				if Tile.get_tile(proxTile).walkable and proxTile != tiledoplayer:
 					zombie.x -= zombie.largura
 
 			elif direction == 3:
 				
 				proxTile = zombie.get_number() + Tile.H
 
-				if Tile.get_tile(proxTile).walkable:
+				if Tile.get_tile(proxTile).walkable and proxTile != tiledoplayer:
 					zombie.x += zombie.largura
 
+			Turnos.playerTurn = True
 
 
 

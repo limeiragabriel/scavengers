@@ -73,20 +73,29 @@ class PlayerHealth():
 		text.ExibirTexto(tela,str(self.healthAmount),400,10,15, Color.DarkRed)
 # ============================================================================
 
-# =================== Tiles onde estao os zumbis ==============================
-def zombieTile():
 
-	currentTiles = [] # posicao atual de cada zumbi
+# ========== Torna inacessivel tiles onde estao os zumbis =======================
+def PosicaoDeZumbi(listaDeTiles = []):
 
-	# ================== torna a posicao do zumbi inacessivel ao player ========
 	for zombie in Zombie.Lista:
 		for tile in Tile.Lista:
 			if tile.number == zombie.get_number():
-				tile.walkable = False
-				currentTiles.append(tile)
+				listaDeTiles.append(tile)
 
-	# ================= verifica se o zumbi ainda esta no msm tile ============
-	for tile in currentTiles:
-		if tile.number not in Zombie.Lista:
-			tile.walkable = True     # torna o tile acessivel caso nao haja mais zumbis
-# =============================================================================
+	for zombie in Zombie.Lista:
+		for tile in listaDeTiles:
+			if tile.number == zombie.get_number():
+				tile.walkable = False
+# ================================================================================
+
+# === zera a lista de tiles de zumbis para q possa ser verificada a posicao novamente ======
+def AttPosicaoDeZumbi(listaDeTiles):
+
+	for tile in listaDeTiles:
+		tile.walkable = True
+# ===========================================================================================
+
+
+class Turnos():
+
+	 playerTurn = True
