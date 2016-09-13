@@ -74,17 +74,16 @@ while True:
 
 	PosicaoDeZumbi(listaDeTiles)
 
-	if ControleDeTurno.playerTurn:
-		MovePlayer(survivor)
-	else:
-		GetHit(survivor)
-		MoveZombie(survivor)
-
 	tela.fill((0,0,0))
 	
 	tela.blit(ground,(0,0))
 
 	Tile.draw_tiles(tela)
+	if ControleDeTurno.playerTurn:
+		MovePlayer(survivor)
+	else:
+		GetHit(survivor,tela)
+		MoveZombie(survivor)
 
 	AttPosicaoDeZumbi(listaDeTiles)
 	listaDeTiles = []

@@ -1,4 +1,4 @@
-import pygame, sys, text,random
+import pygame, sys, text,random,os
 from tile import Tile
 from gameManager import PlayerHealth
 from gameManager import Turnos
@@ -68,7 +68,13 @@ def MovePlayer(survivor):
 	# ============================================================================
 
 # ============== verifica se player esta proxim ao zumbi e deve tomar dano ===========================
-def GetHit(survivor):
+a = 0
+b = 0
+largura = 4000
+altura = 600
+frame = 0.0
+
+def GetHit(survivor,tela):
 
 	# ====== tiles ao redor do player =================================================================
 	U_Tile = survivor.get_number() - Tile.V #Tile superior
@@ -78,10 +84,26 @@ def GetHit(survivor):
 	# =================================================================================================
 
 	# ========================= checa se ha zumbis ao redor do player =================================
+
+	global a,b,largura,altura,frame
+
 	for zombie in Zombie.Lista:
 
 		if (U_Tile == zombie.get_number()) or (D_Tile == zombie.get_number()) or (L_Tile == zombie.get_number()) or (R_Tile == zombie.get_number()):
 			PlayerHealth.healthAmount -= 10
+			caminho = os.path.join('tileset','bloodblur.png')
+
+			if frame >= 1.0:
+				a += 800
+				frame = 0.0
+	
+			frame += 0.1
+	
+			if a >= (800 * 5):
+				a = 0
+			blur = pygame.image.load(caminho).convert_alpha()
+			tela.blit(blur,(0, 0),(a,b,largura,altura))
+	
 	# ==================================================================================================
 # ======================================================================================================
 
