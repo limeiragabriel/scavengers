@@ -1,4 +1,4 @@
-import pygame, sys, text
+import pygame, sys, text,os
 from tile import *
 from charactersC import *
 from interacoes import *
@@ -38,7 +38,9 @@ survivor = Survivor(40,520)
 # ========================================================================
 
 # ======================= musica de fundo ================================
-som = pygame.mixer.Sound('scavengers_music.aif')
+trilha = os.path.join('sounds','scavengers_music.aif')
+som = pygame.mixer.Sound(trilha)
+som.set_volume(1)
 audio = False
 # ========================================================================
 
@@ -56,7 +58,7 @@ nextLevel(tela,survivor,LevelAtual)
 
 # ============================== loop principal ===========================
 while True:
-
+	CloseWindow()
 	# ======================= Game Over ===================================
 	if playerHealth.healthAmount <= 0:
 		som.stop()
@@ -69,22 +71,22 @@ while True:
 		nextLevel(tela,survivor,LevelAtual)
 		survivor = Survivor(40,520)
 	# =====================================================================
-
-	CloseWindow()
+	
 
 	PosicaoDeZumbi(listaDeTiles)
 
-	tela.fill((0,0,0))
+	#tela.fill((0,0,0))
 	
 	tela.blit(ground,(0,0))
 
 	Tile.draw_tiles(tela)
+
 	if ControleDeTurno.playerTurn:
 		MovePlayer(survivor)
 	else:
 		GetHit(survivor,tela)
 		MoveZombie(survivor)
-
+	
 	AttPosicaoDeZumbi(listaDeTiles)
 	listaDeTiles = []
 

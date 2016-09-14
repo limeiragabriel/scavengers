@@ -1,4 +1,4 @@
-import pygame, sys, random, text,os
+import pygame, sys, random, text
 from tile import Tile
 from colors import Color
 from charactersC import Zombie
@@ -64,11 +64,7 @@ def TilesLaterais(tela):
 # ===========================================================================
 
 # ================= exibe a quantidade de energia do player ===================
-a = 0
-b = 0
-largura = 4000
-altura = 600
-frame = 0.0
+
 class PlayerHealth():
 
 	healthAmount = 100
@@ -76,22 +72,6 @@ class PlayerHealth():
 	def displayHealth(self,tela):
 		text.ExibirTexto(tela,'Food:',320,10,15)
 		text.ExibirTexto(tela,str(self.healthAmount),400,10,15, Color.DarkRed)
-
-	def bloodblur(self,tela):
-		global a,b,largura,altura,frame
-
-		caminho = os.path.join('tileset','bloodblur.png')
-
-		if frame >= 1.0:
-			a += 800
-			frame = 0.0
-
-		frame += 0.1
-
-		if a >= (800 * 5):
-			a = 0
-		blur = pygame.image.load(caminho).convert_alpha()
-		tela.blit(blur,(0, 0),(a,b,largura,altura))
 
 # ============================================================================
 

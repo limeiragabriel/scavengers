@@ -1,4 +1,4 @@
-import pygame, text, os
+import pygame, text, os,sys
 import random
 
 Tileset_ = ['invalid01.png','invalid02.png','invalid03.png','invalid04.png',
@@ -17,6 +17,11 @@ procedurais = (43,44,45,47,48,49,51,52,53,55,56,
 				225,227,228,229,231,232,233,235,236,237,238,
 				245,247,248,249,251,252,253,255,256,257,258)
 
+def cancelDrawAndQuit():
+	close = pygame.event.get(pygame.QUIT)
+	if close:
+		pygame.quit()
+		sys.exit()
 
 class Tile(pygame.Rect):
 
@@ -93,6 +98,8 @@ class Tile(pygame.Rect):
 
 		for tile in Tile.Lista:
 
+			cancelDrawAndQuit()
+			
 			if tile.Type != 'vazio':
 
 				caminho = os.path.join("tileset", Tileset_[tile.idTileInv])
