@@ -67,3 +67,16 @@ Vocẽ está na pele de um sobrevivente do apocalipse zumbi em um mundo totalmen
   * depois de levar o primeiro hit do zumbi o player não gasta mais energia ao andar pelo cenario
   * zumbis atravessam player e vice-versa
   * zumbis se atravessam
+  
+### 13/09/2016
+
+* efeito de dano (blood blur)
+
+### 14/09/2016
+
+* adicionados efeitos sonoros
+  * player footsteps
+  * zombie fotsteps
+  * player hit
+  * zombie attack
+* correção do bug na hora de fechar o game
