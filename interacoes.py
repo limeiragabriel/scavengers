@@ -1,7 +1,7 @@
 import pygame, sys, text,random,os
 from tile import Tile
 from gameManager import PlayerHealth
-from gameManager import Turnos
+from gameManager import Gerenciador
 from charactersC import Zombie
 
 # ================= movimentacao do personagem =======================
@@ -23,7 +23,7 @@ def MovePlayer(survivor):
 				som.play(0)
 
 				# ========= ao tentar realizar movimento o turno muda =====
-				Turnos.playerTurn = False
+				Gerenciador.playerTurn = False
 
 				# ================== mover para cima ========================= 
 				if Tile.get_tile(proxTile).walkable:
@@ -38,7 +38,7 @@ def MovePlayer(survivor):
 				som.play(0)
 
 				# ========= ao tentar realizar movimento o turno muda =====
-				Turnos.playerTurn = False
+				Gerenciador.playerTurn = False
 
 				# ================== mover para baixo =========================
 				if Tile.get_tile(proxTile).walkable:
@@ -53,7 +53,7 @@ def MovePlayer(survivor):
 				som.play(0)
 
 				# ========= ao tentar realizar movimento o turno muda =====
-				Turnos.playerTurn = False
+				Gerenciador.playerTurn = False
 
 				# ================== mover para besquerda ====================
 				if Tile.get_tile(proxTile).walkable:
@@ -68,7 +68,7 @@ def MovePlayer(survivor):
 				som.play(0)
 
 				# ========= ao tentar realizar movimento o turno muda =====
-				Turnos.playerTurn = False
+				Gerenciador.playerTurn = False
 				# ================== mover para direita ====================
 				if Tile.get_tile(proxTile).walkable:
 					survivor.x += survivor.largura
@@ -139,7 +139,7 @@ def MoveZombie(survivor):
 		move = random.randint(0,1)
 
 		if move == 0:
-			Turnos.playerTurn = True
+			Gerenciador.playerTurn = True
 
 		else:
 			
@@ -188,7 +188,7 @@ def MoveZombie(survivor):
 
 					som.play(0)
 
-			Turnos.playerTurn = True
+			Gerenciador.playerTurn = True
 
 
 

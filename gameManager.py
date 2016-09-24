@@ -98,6 +98,12 @@ def AttPosicaoDeZumbi(listaDeTiles):
 # ===========================================================================================
 
 
-class Turnos():
+class Gerenciador():
 
 	 playerTurn = True
+
+	 onMenu = True
+
+	 primeiroDia = True
+
+	 gameMode = 'easy'

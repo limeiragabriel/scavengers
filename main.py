@@ -3,6 +3,7 @@ from tile import *
 from charactersC import *
 from interacoes import *
 from gameManager import *
+from menu import Menu
 
 pygame.init()
 pygame.mixer.init()
@@ -47,18 +48,32 @@ audio = False
 # ======================== dia atual e energia ===========================
 LevelAtual = 1
 playerHealth = PlayerHealth()
-ControleDeTurno = Turnos()
+
+Manager = Gerenciador()
 
 
 listaDeTiles = []
 # ========================================================================
 
-# mostrar o primeiro dia /// tirar quando implementar o menu
-nextLevel(tela,survivor,LevelAtual)
 
 # ============================== loop principal ===========================
 while True:
+
+	# ================ fechar janela
 	CloseWindow()
+	# ==============================
+
+	# ========================== menu principal ==============================
+	while Manager.onMenu:
+		Menu(tela)
+	# ========================================================================
+
+	#============= mostrar o primeiro dia ao sair do menu ================
+	if Manager.primeiroDia:
+		nextLevel(tela,survivor,LevelAtual)
+		Manager.primeiroDia = False #torna falso para nao exibir dia 1 mais de uma vez
+	# ======================================================================
+
 	# ======================= Game Over ===================================
 	if playerHealth.healthAmount <= 0:
 		som.stop()
@@ -72,33 +87,43 @@ while True:
 		survivor = Survivor(40,520)
 	# =====================================================================
 	
-
+	# ================ torna nao andavel lugar onde tem zumbi ================
 	PosicaoDeZumbi(listaDeTiles)
+	# ======================================================================
 
 	#tela.fill((0,0,0))
 	
-	tela.blit(ground,(0,0))
+	tela.blit(ground,(0,0)) # fundo (terreno)
 
-	Tile.draw_tiles(tela)
+	Tile.draw_tiles(tela)   # desenha os tiles do cenario
 
-	if ControleDeTurno.playerTurn:
+	# ================== sistema de trurnos ==================================
+	if Manager.playerTurn:
 		MovePlayer(survivor)
 	else:
-		GetHit(survivor,tela)
+		#GetHit(survivor,tela)
 		MoveZombie(survivor)
+		GetHit(survivor,tela)
+	# =========================================================================
 	
+	# =============== zera as posicoes para atualiza-las =====================
 	AttPosicaoDeZumbi(listaDeTiles)
 	listaDeTiles = []
+	# =========================================================================
 
 	# ======================== HUD =========================================
 	text.ExibirTexto(tela,'Day '+str(LevelAtual),20,10,15)
 	playerHealth.displayHealth(tela)
 	# ======================================================================
 
-	survivor.draw(tela)
+	survivor.draw(tela) # desenha o sobrevivente
+
+	# zumbis =========================
 	zombie1.draw(tela)
 
 	zombie2.draw(tela)
+	# ===================
+	# ================================
 
 	# ====================== inicia a musica de fundo ======================
 	if audio == False:
