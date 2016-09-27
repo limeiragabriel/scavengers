@@ -18,7 +18,41 @@ def CloseWindow():
 		pygame.quit()
 		sys.exit()
 # ====================================================================
+# ========== tela de fim de jogo ao acabar a energia do player ===========
+def Intro(tela):
+	clock = pygame.time.Clock()
+	tempo = 0
 
+	while tempo < 120:
+		CloseWindow()
+		clock.tick(30)
+		tela.fill([0,0,0])
+		text.ExibirTexto(tela,'September 28...',100,500,15)
+		tempo += 1
+		pygame.display.flip()
+	while tempo < 240:
+		CloseWindow()
+		clock.tick(30)
+		tela.fill([0,0,0])
+		text.ExibirTexto(tela,'Daylight.',100,500,15)
+		tempo += 1
+		pygame.display.flip()
+	while tempo < 360:
+		CloseWindow()
+		clock.tick(30)
+		tela.fill([0,0,0])
+		text.ExibirTexto(tela,'The Monsters have overtaken the city.',100,500,15)
+		tempo += 1
+		pygame.display.flip()
+	while tempo < 480:
+		CloseWindow()
+		clock.tick(30)
+		tela.fill([0,0,0])
+		text.ExibirTexto(tela,'Somehow...',100,500,15)
+		text.ExibirTexto(tela,"I'm still... Alive.",100,520,15)
+		tempo += 1
+		pygame.display.flip()
+# ==========================================================================
 # ===================== gera o proximo nivel =========================
 def nextLevel(tela,survivor,LevelAtual):
 

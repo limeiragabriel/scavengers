@@ -70,6 +70,7 @@ while True:
 
 	#============= mostrar o primeiro dia ao sair do menu ================
 	if Manager.primeiroDia:
+		Intro(tela)
 		nextLevel(tela,survivor,LevelAtual)
 		Manager.primeiroDia = False #torna falso para nao exibir dia 1 mais de uma vez
 	# ======================================================================
@@ -86,13 +87,13 @@ while True:
 		nextLevel(tela,survivor,LevelAtual)
 		survivor = Survivor(40,520)
 	# =====================================================================
-	
+
 	# ================ torna nao andavel lugar onde tem zumbi ================
 	PosicaoDeZumbi(listaDeTiles)
 	# ======================================================================
 
 	#tela.fill((0,0,0))
-	
+
 	tela.blit(ground,(0,0)) # fundo (terreno)
 
 	Tile.draw_tiles(tela)   # desenha os tiles do cenario
@@ -105,7 +106,7 @@ while True:
 		MoveZombie(survivor)
 		GetHit(survivor,tela)
 	# =========================================================================
-	
+
 	# =============== zera as posicoes para atualiza-las =====================
 	AttPosicaoDeZumbi(listaDeTiles)
 	listaDeTiles = []
