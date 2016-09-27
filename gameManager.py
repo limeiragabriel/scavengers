@@ -1,4 +1,4 @@
-import pygame, sys, random, text
+import pygame, sys, random, text,os
 from tile import Tile
 from colors import Color
 from charactersC import Zombie
@@ -22,19 +22,38 @@ def CloseWindow():
 def Intro(tela):
 	clock = pygame.time.Clock()
 	tempo = 0
+	soundTime = 0
+	R,G,B = 255,255,255
+	audio = False
 
+	startS = os.path.join('sounds','MenuGameStart.wav')
+	StartSound = pygame.mixer.Sound(startS)
+
+	while soundTime < 240:
+		CloseWindow()
+		clock.tick(30)
+
+		if audio == False:
+			StartSound.play()
+			audio = True
+
+		tela.fill([R,G,B])
+		if R >= 2:
+			R,G,B = R-2,G-2,B-2
+		soundTime += 1
+		pygame.display.flip()
 	while tempo < 120:
 		CloseWindow()
 		clock.tick(30)
 		tela.fill([0,0,0])
-		text.ExibirTexto(tela,'September 28...',100,500,15)
+		text.ExibirTexto(tela,'September 28.',100,500,15)
 		tempo += 1
 		pygame.display.flip()
 	while tempo < 240:
 		CloseWindow()
 		clock.tick(30)
 		tela.fill([0,0,0])
-		text.ExibirTexto(tela,'Daylight.',100,500,15)
+		text.ExibirTexto(tela,'Daylight...',100,500,15)
 		tempo += 1
 		pygame.display.flip()
 	while tempo < 360:
@@ -49,9 +68,20 @@ def Intro(tela):
 		clock.tick(30)
 		tela.fill([0,0,0])
 		text.ExibirTexto(tela,'Somehow...',100,500,15)
-		text.ExibirTexto(tela,"I'm still... Alive.",100,520,15)
 		tempo += 1
 		pygame.display.flip()
+	while tempo < 600:
+		CloseWindow()
+		clock.tick(30)
+		tela.fill([0,0,0])
+		text.ExibirTexto(tela,"I'm still... Alive.",100,500,15)
+		tempo += 1
+		pygame.display.flip()
+
+	tempo = 0
+	soundTime = 0
+	R,G,B = 255,255,255
+	audio = False
 # ==========================================================================
 # ===================== gera o proximo nivel =========================
 def nextLevel(tela,survivor,LevelAtual):
