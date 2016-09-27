@@ -28,6 +28,7 @@ def Intro(tela):
 
 	startS = os.path.join('sounds','MenuGameStart.wav')
 	StartSound = pygame.mixer.Sound(startS)
+	StartSound.set_volume(0.5)
 
 	# ======= efeito de 'esmaecer' e som de start =====
 	while soundTime < 240:
@@ -163,7 +164,7 @@ def AttPosicaoDeZumbi(listaDeTiles):
 		tile.walkable = True
 # ===========================================================================================
 
-
+# ===================== geremcia turnos, menu, dificuldade etc ========================
 class Gerenciador():
 
 	 playerTurn = True

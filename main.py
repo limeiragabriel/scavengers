@@ -51,9 +51,9 @@ playerHealth = PlayerHealth()
 tonalidade = Color.LimeGreen
 # ========================================================================
 
-Manager = Gerenciador()
+Manager = Gerenciador() #classe do gamemanager
 
-listaDeTiles = []
+listaDeTiles = [] # armazenar posicoes dos zumbis
 
 # ============================== loop principal ===========================
 while True:
@@ -69,7 +69,7 @@ while True:
 
 	#============= mostrar o primeiro dia ao sair do menu ================
 	if Manager.primeiroDia:
-		#Intro(tela)
+		Intro(tela)
 		nextLevel(tela,survivor,LevelAtual)
 		Manager.primeiroDia = False #torna falso para nao exibir dia 1 mais de uma vez
 	# ======================================================================
