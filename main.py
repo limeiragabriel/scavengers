@@ -48,13 +48,12 @@ audio = False
 # ======================== dia atual e energia ===========================
 LevelAtual = 1
 playerHealth = PlayerHealth()
+tonalidade = Color.LimeGreen
+# ========================================================================
 
 Manager = Gerenciador()
 
-
 listaDeTiles = []
-# ========================================================================
-
 
 # ============================== loop principal ===========================
 while True:
@@ -70,7 +69,7 @@ while True:
 
 	#============= mostrar o primeiro dia ao sair do menu ================
 	if Manager.primeiroDia:
-		Intro(tela)
+		#Intro(tela)
 		nextLevel(tela,survivor,LevelAtual)
 		Manager.primeiroDia = False #torna falso para nao exibir dia 1 mais de uma vez
 	# ======================================================================
@@ -113,8 +112,15 @@ while True:
 	# =========================================================================
 
 	# ======================== HUD =========================================
+	if playerHealth.healthAmount >= 75:
+		tonalidade = Color.LimeGreen
+	elif playerHealth.healthAmount >= 50:
+		tonalidade = Color.DarkOrange
+	else:
+		tonalidade = Color.Red
+
 	text.ExibirTexto(tela,'Day '+str(LevelAtual),20,10,15)
-	playerHealth.displayHealth(tela)
+	playerHealth.displayHealth(tela,tonalidade)
 	# ======================================================================
 
 	survivor.draw(tela) # desenha o sobrevivente

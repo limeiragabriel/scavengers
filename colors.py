@@ -2,7 +2,6 @@ import pygame
 
 class Color():
 
-
 	#Preto
 	Black = (0,0,0)
 
@@ -18,3 +17,7 @@ class Color():
 	DarkGreen = (0,100,0)
 	Green = (0,128,0)
 	ForestGreen = (34,139,34)
+	LimeGreen = (50,205,50)
+
+	# laranja
+	DarkOrange = (255,140,0)

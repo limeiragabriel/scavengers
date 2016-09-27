@@ -18,7 +18,7 @@ def CloseWindow():
 		pygame.quit()
 		sys.exit()
 # ====================================================================
-# ========== tela de fim de jogo ao acabar a energia do player ===========
+# ============== textos de inicio antes do gameplay ==================
 def Intro(tela):
 	clock = pygame.time.Clock()
 	tempo = 0
@@ -29,6 +29,7 @@ def Intro(tela):
 	startS = os.path.join('sounds','MenuGameStart.wav')
 	StartSound = pygame.mixer.Sound(startS)
 
+	# ======= efeito de 'esmaecer' e som de start =====
 	while soundTime < 240:
 		CloseWindow()
 		clock.tick(30)
@@ -42,6 +43,8 @@ def Intro(tela):
 			R,G,B = R-2,G-2,B-2
 		soundTime += 1
 		pygame.display.flip()
+	#================================================
+	#============ exibicao dos textos ==============
 	while tempo < 120:
 		CloseWindow()
 		clock.tick(30)
@@ -77,6 +80,7 @@ def Intro(tela):
 		text.ExibirTexto(tela,"I'm still... Alive.",100,500,15)
 		tempo += 1
 		pygame.display.flip()
+	#===============================================
 
 	tempo = 0
 	soundTime = 0
@@ -128,17 +132,15 @@ def TilesLaterais(tela):
 # ===========================================================================
 
 # ================= exibe a quantidade de energia do player ===================
-
 class PlayerHealth():
 
 	healthAmount = 100
 
-	def displayHealth(self,tela):
+	def displayHealth(self,tela,tonalidade):
 		text.ExibirTexto(tela,'Food:',320,10,15)
-		text.ExibirTexto(tela,str(self.healthAmount),400,10,15, Color.DarkRed)
+		text.ExibirTexto(tela,str(self.healthAmount),400,10,15,tonalidade)
 
 # ============================================================================
-
 
 # ========== Torna inacessivel tiles onde estao os zumbis =======================
 def PosicaoDeZumbi(listaDeTiles = []):
