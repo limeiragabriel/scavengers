@@ -34,7 +34,7 @@ class Tile(pygame.Rect):
 
 		self.Type = Type
 		self.number = Tile.total_tiles
-		
+
 		# Atribuindo um identificador aleatorio para definir o sprite de cada tile...
 		self.idTileInv = random.randint(0,10)
 		#self.idTilePath = random.randint(11,17)
@@ -99,13 +99,14 @@ class Tile(pygame.Rect):
 		for tile in Tile.Lista:
 
 			cancelDrawAndQuit()
-			
+
 			if tile.Type != 'vazio':
 
 				caminho = os.path.join("tileset", Tileset_[tile.idTileInv])
 				tileInv = pygame.image.load(caminho).convert_alpha()
 
 				tela.blit(tileInv,tile)
+				tile.walkable = False
 
 			#elif tile.number == 39:
 
