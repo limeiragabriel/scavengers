@@ -1,6 +1,12 @@
 import pygame, text, os,sys
 import random
 
+laterais = (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
+			21,40,41,60,61,80,81,100,101,120,121,140,141,160,
+			161,180,181,200,201,220,221,240,241,260,261,280,
+			281,282,283,284,285,286,287,288,289,290,291,292,293,
+			294,295,296,297,298,299,300)
+
 Tileset_ = ['invalid01.png','invalid02.png','invalid03.png','invalid04.png',
 			'invalid05.png','invalid06.png','invalid07.png','invalid08.png',
 			'invalid09.png','invalid10.png','invalid11.png',
@@ -55,20 +61,6 @@ class Tile(pygame.Rect):
 
 		Tile.Lista.append(self)
 
-	# ================ unido ao refresh =============
-	#@staticmethod
-	#def RecarregarAleatorios():
-	#	for tile in Tile.Lista:
-
-	#		if tile.number in procedurais:
-	#			if tile.tipo_ == 0:
-	#				tile.Type = 'vazio'
-	#				tile.walkable = True
-	#			else:
-	#				tile.Type = 'solido'
-	#				tile.walkable = False
-
-
 	# ======= "recarrega" os tiles para gerar um novo cenario aleatorio ==========
 	@staticmethod
 	def refresh():
@@ -102,28 +94,10 @@ class Tile(pygame.Rect):
 
 			cancelDrawAndQuit()
 
-			if tile.Type != 'vazio':
+			if tile.Type != 'vazio' and tile.number not in laterais:
 
 				caminho = os.path.join("tileset", Tileset_[tile.idTileInv])
 				tileInv = pygame.image.load(caminho).convert_alpha()
 
 				tela.blit(tileInv,tile)
 				tile.walkable = False
-
-			#elif tile.number == 39:
-
-			#	caminho3 = os.path.join("tileset","exit.png")
-			#	exit_ = pygame.image.load(caminho3).convert_alpha()
-
-			#	tela.blit(exit_,tile)
-
-			# desenha todas as tiles do chao validas (exigia muito processamento)
-
-			#elif tile.Type == 'vazio':
-
-			#	caminho2 = os.path.join("tileset",Tileset_[tile.idTilePath])
-			#	tilePath = pygame.image.load(caminho2).convert_alpha()
-
-			#	tela.blit(tilePath,tile)
-
-			#text.ExibirTexto(tela,tile.number, tile.x, tile.y)

@@ -9,7 +9,6 @@ from spawn import *
 pygame.init()
 pygame.mixer.init()
 
-
 # ====================== Resolucao ======================================
 LARGURA,ALTURA = 800, 600
 tela = pygame.display.set_mode((LARGURA,ALTURA))
@@ -27,7 +26,7 @@ TilesLaterais(tela)
 # ========================================================================
 
 # ========= tiles do Back ground =========================================
-caminho = os.path.join("tileset", "DirtGround.png")
+caminho = os.path.join("tileset", "back.png")
 ground = pygame.image.load(caminho).convert_alpha()
 # ========================================================================
 
@@ -43,9 +42,6 @@ displayRegen = LifeRegen()
 enemyPoint = EnemySPoint()
 
 zombie1 = Zombie(Tile.get_tile(enemyPoint.sp1).x,Tile.get_tile(enemyPoint.sp1).y)
-#zombie2 = Zombie(Tile.get_tile(enemyPoint.sp2).x,Tile.get_tile(enemyPoint.sp2).y)
-#zombie3 = Zombie(Tile.get_tile(enemyPoint.sp3).x,Tile.get_tile(enemyPoint.sp3).y)
-#zombie4 = Zombie(Tile.get_tile(enemyPoint.sp4).x,Tile.get_tile(enemyPoint.sp4).y)
 
 survivor = Survivor(40,520)
 # ========================================================================
@@ -67,31 +63,27 @@ Manager = Gerenciador() #classe do gamemanager
 
 listaDeTiles = [] # armazenar posicoes dos zumbis
 
+pygame.display.set_caption('Scavengers')
 # ============================== loop principal ===========================
 while True:
-
 	# ================ fechar janela
 	CloseWindow()
 	# ==============================
-
 	# ========================== menu principal ==============================
 	while Manager.onMenu:
 		Menu(tela)
 	# ========================================================================
-
 	#============= mostrar o primeiro dia ao sair do menu ================
 	if Manager.primeiroDia:
 		Intro(tela)
 		nextLevel(tela,survivor,LevelAtual)
 		Manager.primeiroDia = False #torna falso para nao exibir dia 1 mais de uma vez
 	# ======================================================================
-
 	# ======================= Game Over ===================================
 	if playerHealth.healthAmount <= 0:
 		som.stop()
 		GameOver(tela,LevelAtual)
 	# =====================================================================
-
 	# ========== checa se o player alcancou o fim da fase =================
 	if survivor.get_number() == 39:
 		LevelAtual += 1
@@ -123,13 +115,10 @@ while True:
 								zombie7 = Zombie(Tile.get_tile(enemyPoint.sp7).x,Tile.get_tile(enemyPoint.sp7).y)
 
 	# =====================================================================
-
 	# ================ torna nao andavel lugar onde tem zumbi ================
 	if LevelAtual != 1:
 		PosicaoDeZumbi(listaDeTiles)
 	# ======================================================================
-
-	#tela.fill((0,0,0))
 
 	tela.blit(ground,(0,0)) # fundo (terreno)
 
@@ -207,7 +196,7 @@ while True:
 	# ======================================================================
 
 	# fps counter ===============
-	pygame.display.set_caption('Scavengers - FPS %.2f' %(clock.get_fps()) )
+	#pygame.display.set_caption('Scavengers - FPS %.2f' %(clock.get_fps()) )
 	# ===========================
 
 	pygame.display.flip() #update screen
