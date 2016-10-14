@@ -21,9 +21,9 @@ zombieSound = os.path.join('sounds','enemy.aif')
 somZumbi = pygame.mixer.Sound(zombieSound)
 somZumbi.set_volume(0.5)
 
-zombiefootstep = os.path.join('sounds','footstep1.aif')
-footstepsZombie = pygame.mixer.Sound(zombiefootstep)
-footstepsZombie.set_volume(0.3)
+#zombiefootstep = os.path.join('sounds','footstep1.aif')
+#footstepsZombie = pygame.mixer.Sound(zombiefootstep)
+#footstepsZombie.set_volume(0.3)
 #==========================================================================
 
 # ================= movimentacao do personagem =======================
@@ -116,9 +116,9 @@ def GetHit(survivor,tela):
 
 		if (U_Tile == zombie.get_number()) or (D_Tile == zombie.get_number()) or (L_Tile == zombie.get_number()) or (R_Tile == zombie.get_number()):
 			if Gerenciador.gameMode == 'easy':
-				PlayerHealth.healthAmount -= 10
+				PlayerHealth.healthAmount -= 20
 			else:
-				PlayerHealth.healthAmount -= 30
+				PlayerHealth.healthAmount -= 40
 			DisplayDamage.enemyHit = True
 
 			playerDamage.play(0)
@@ -142,7 +142,7 @@ def GetHit(survivor,tela):
 # ======================================================================================================
 
 def MoveZombie(survivor):
-	global footstepsZombie
+	#global footstepsZombie
 
 	for zombie in Zombie.Lista:
 
@@ -169,7 +169,7 @@ def MoveZombie(survivor):
 				if Tile.get_tile(proxTile).walkable and proxTile != tiledoplayer:
 					zombie.y -= zombie.altura
 
-					footstepsZombie.play(0)
+					#footstepsZombie.play(0)
 
 			elif direction == 1:
 
@@ -178,7 +178,7 @@ def MoveZombie(survivor):
 				if Tile.get_tile(proxTile).walkable and proxTile != tiledoplayer:
 					zombie.y += zombie.altura
 
-					footstepsZombie.play(0)
+					#footstepsZombie.play(0)
 
 			elif direction == 2:
 
@@ -187,7 +187,7 @@ def MoveZombie(survivor):
 				if Tile.get_tile(proxTile).walkable and proxTile != tiledoplayer:
 					zombie.x -= zombie.largura
 
-					footstepsZombie.play(0)
+					#footstepsZombie.play(0)
 
 			elif direction == 3:
 
@@ -196,6 +196,6 @@ def MoveZombie(survivor):
 				if Tile.get_tile(proxTile).walkable and proxTile != tiledoplayer:
 					zombie.x += zombie.largura
 
-					footstepsZombie.play(0)
+					#footstepsZombie.play(0)
 
 			Gerenciador.playerTurn = True

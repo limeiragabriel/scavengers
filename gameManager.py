@@ -230,9 +230,9 @@ def DisplayHitInfo(tela):
 
 	if DisplayDamage.enemyHit == True and DisplayDamage.displayTime < 10:
 		if Gerenciador.gameMode == 'easy':
-			text.ExibirTexto(tela,'-10',380,40,15,Color.DarkRed)
+			text.ExibirTexto(tela,'-20',380,40,15,Color.DarkRed)
 		else:
-			text.ExibirTexto(tela,'-30',380,40,15,Color.DarkRed)
+			text.ExibirTexto(tela,'-40',380,40,15,Color.DarkRed)
 		DisplayDamage.displayTime += 1
 	else:
 		DisplayDamage.enemyHit = False

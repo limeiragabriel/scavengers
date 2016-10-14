@@ -111,8 +111,16 @@ while True:
 					zombie4 = Zombie(Tile.get_tile(enemyPoint.sp4).x,Tile.get_tile(enemyPoint.sp4).y)
 					if LevelAtual > 5 and Manager.gameMode == 'hard':
 						zombie5 = Zombie(Tile.get_tile(enemyPoint.sp5).x,Tile.get_tile(enemyPoint.sp5).y)
+						if LevelAtual > 6:
+							zombie6 = Zombie(Tile.get_tile(enemyPoint.sp6).x,Tile.get_tile(enemyPoint.sp6).y)
+							if LevelAtual > 7:
+								zombie7 = Zombie(Tile.get_tile(enemyPoint.sp7).x,Tile.get_tile(enemyPoint.sp7).y)
 					elif LevelAtual > 10 and Manager.gameMode == 'easy':
 						zombie5 = Zombie(Tile.get_tile(enemyPoint.sp5).x,Tile.get_tile(enemyPoint.sp5).y)
+						if LevelAtual > 12:
+							zombie6 = Zombie(Tile.get_tile(enemyPoint.sp6).x,Tile.get_tile(enemyPoint.sp6).y)
+							if LevelAtual > 14:
+								zombie7 = Zombie(Tile.get_tile(enemyPoint.sp7).x,Tile.get_tile(enemyPoint.sp7).y)
 
 	# =====================================================================
 
@@ -179,8 +187,16 @@ while True:
 					zombie4.draw(tela)
 					if LevelAtual > 5 and Manager.gameMode == 'hard':
 						zombie5.draw(tela)
+						if LevelAtual > 6:
+							zombie6.draw(tela)
+							if LevelAtual > 7:
+								zombie7.draw(tela)
 					elif LevelAtual > 10 and Manager.gameMode == 'easy':
 						zombie5.draw(tela)
+						if LevelAtual > 12:
+							zombie6.draw(tela)
+							if LevelAtual > 14:
+								zombie7.draw(tela)
 	# ===================
 	# ================================
 

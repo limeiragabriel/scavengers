@@ -44,11 +44,11 @@ class SpawnPoint():
                     #text.ExibirTexto(tela,'+ 10',200,10,15)
                 elif tile.itemType == 1:
                     tile.itemType = 2
-                    PlayerHealth.healthAmount += 20
+                    PlayerHealth.healthAmount += 15
                     LifeRegen.displayDrink = True
                     #text.ExibirTexto(tela,'+ 20',200,10,15)
 
-enemySpawnList = [66,104,108,74,112,116,184,206,188,192,214,196,70,150,210]
+enemySpawnList = [66,104,108,74,112,116,184,206,188,192,214,196,70,150,210,26,34]
 
 class EnemySPoint():
     sp1 = enemySpawnList[random.randint(0,2)]
@@ -56,6 +56,8 @@ class EnemySPoint():
     sp3 = enemySpawnList[random.randint(6,8)]
     sp4 = enemySpawnList[random.randint(9,11)]
     sp5 = enemySpawnList[random.randint(12,14)]
+    sp6 = enemySpawnList[15]
+    sp7 = enemySpawnList[16]
 
     def refreshSpawns(self):
         self.sp1 = enemySpawnList[random.randint(0,2)]
