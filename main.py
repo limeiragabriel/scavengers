@@ -103,11 +103,17 @@ while True:
 		#zombie = Zombie()
 		Zombie.Lista = []
 		zombie1 = Zombie(Tile.get_tile(enemyPoint.sp1).x,Tile.get_tile(enemyPoint.sp1).y)
-		zombie2 = Zombie(Tile.get_tile(enemyPoint.sp2).x,Tile.get_tile(enemyPoint.sp2).y)
-		zombie3 = Zombie(Tile.get_tile(enemyPoint.sp3).x,Tile.get_tile(enemyPoint.sp3).y)
-		zombie4 = Zombie(Tile.get_tile(enemyPoint.sp4).x,Tile.get_tile(enemyPoint.sp4).y)
-		if Manager.gameMode == 'hard':
-			zombie5 = Zombie(Tile.get_tile(enemyPoint.sp5).x,Tile.get_tile(enemyPoint.sp5).y)
+		if LevelAtual > 2:
+			zombie2 = Zombie(Tile.get_tile(enemyPoint.sp2).x,Tile.get_tile(enemyPoint.sp2).y)
+			if LevelAtual > 3:
+				zombie3 = Zombie(Tile.get_tile(enemyPoint.sp3).x,Tile.get_tile(enemyPoint.sp3).y)
+				if LevelAtual > 4:
+					zombie4 = Zombie(Tile.get_tile(enemyPoint.sp4).x,Tile.get_tile(enemyPoint.sp4).y)
+					if LevelAtual > 5 and Manager.gameMode == 'hard':
+						zombie5 = Zombie(Tile.get_tile(enemyPoint.sp5).x,Tile.get_tile(enemyPoint.sp5).y)
+					elif LevelAtual > 10 and Manager.gameMode == 'easy':
+						zombie5 = Zombie(Tile.get_tile(enemyPoint.sp5).x,Tile.get_tile(enemyPoint.sp5).y)
+
 	# =====================================================================
 
 	# ================ torna nao andavel lugar onde tem zumbi ================
@@ -165,11 +171,16 @@ while True:
 	# zumbis =========================
 	if LevelAtual != 1:
 		zombie1.draw(tela)
-		zombie2.draw(tela)
-		zombie3.draw(tela)
-		zombie4.draw(tela)
-		if Manager.gameMode == 'hard':
-			zombie5.draw(tela)
+		if LevelAtual > 2:
+			zombie2.draw(tela)
+			if LevelAtual > 3:
+				zombie3.draw(tela)
+				if LevelAtual > 4:
+					zombie4.draw(tela)
+					if LevelAtual > 5 and Manager.gameMode == 'hard':
+						zombie5.draw(tela)
+					elif LevelAtual > 10 and Manager.gameMode == 'easy':
+						zombie5.draw(tela)
 	# ===================
 	# ================================
 
