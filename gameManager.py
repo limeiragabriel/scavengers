@@ -193,3 +193,47 @@ class Gerenciador():
 	 primeiroDia = True
 
 	 gameMode = 'easy'
+
+
+#======================= mostra a recuperacao de vida ao pegar itens ============
+class LifeRegen():
+	displayFruit = False
+	displayDrink = False
+	fruitTime = 0
+	drinkTime = 0
+
+def regenFruit(tela):
+
+	if LifeRegen.displayFruit == True and LifeRegen.fruitTime < 10:
+		text.ExibirTexto(tela,'+10',320,40,15,Color.LimeGreen)
+		LifeRegen.fruitTime += 1
+	else:
+		LifeRegen.displayFruit = False
+		LifeRegen.fruitTime = 0
+
+def regenDrink(tela):
+
+	if LifeRegen.displayDrink == True and LifeRegen.drinkTime < 10:
+		text.ExibirTexto(tela,'+15',320,40,15,Color.LimeGreen)
+		LifeRegen.drinkTime += 1
+	else:
+		LifeRegen.displayDrink = False
+		LifeRegen.drinkTime = 0
+#=====================================================================================
+
+class DisplayDamage():
+	enemyHit = False
+	displayTime = 0
+
+
+def DisplayHitInfo(tela):
+
+	if DisplayDamage.enemyHit == True and DisplayDamage.displayTime < 10:
+		if Gerenciador.gameMode == 'easy':
+			text.ExibirTexto(tela,'-10',380,40,15,Color.DarkRed)
+		else:
+			text.ExibirTexto(tela,'-30',380,40,15,Color.DarkRed)
+		DisplayDamage.displayTime += 1
+	else:
+		DisplayDamage.enemyHit = False
+		DisplayDamage.displayTime = 0

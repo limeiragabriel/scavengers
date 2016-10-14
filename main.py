@@ -36,6 +36,7 @@ ground = pygame.image.load(caminho).convert_alpha()
 items = SpawnPoint()
 items.makeSpawns()
 
+displayRegen = LifeRegen()
 #=========================================================================
 
 # =================== personagens ========================================
@@ -116,6 +117,13 @@ while True:
 	items.drawItem(tela)
 
 	items.ColectSpawnItem(survivor)
+
+	if displayRegen.displayFruit:
+		regenFruit(tela)
+	if displayRegen.displayDrink:
+		regenDrink(tela)
+
+	DisplayHitInfo(tela)
 	# ================== sistema de trurnos ==================================
 	if Manager.playerTurn:
 		MovePlayer(survivor)
@@ -165,7 +173,7 @@ while True:
 	# ======================================================================
 
 	# fps counter ===============
-	pygame.display.set_caption('FPS %.2f' %(clock.get_fps()) )
+	pygame.display.set_caption('Scavengers - FPS %.2f' %(clock.get_fps()) )
 	# ===========================
 
 	pygame.display.flip() #update screen

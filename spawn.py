@@ -1,7 +1,7 @@
-import pygame,random,os
+import pygame,random,os,text
 from tile import Tile
 from charactersC import *
-from gameManager import PlayerHealth
+from gameManager import PlayerHealth,LifeRegen
 
 itemSpawnList = [46,50,54,106,110,114,166,170,174,226,230,234]
 spawnTiles = []
@@ -39,7 +39,11 @@ class SpawnPoint():
                     pass
                 elif tile.itemType == 0:
                     tile.itemType = 2
-                    PlayerHealth.healthAmount += 5
+                    PlayerHealth.healthAmount += 10
+                    LifeRegen.displayFruit = True
+                    #text.ExibirTexto(tela,'+ 10',200,10,15)
                 elif tile.itemType == 1:
                     tile.itemType = 2
-                    PlayerHealth.healthAmount += 10
+                    PlayerHealth.healthAmount += 20
+                    LifeRegen.displayDrink = True
+                    #text.ExibirTexto(tela,'+ 20',200,10,15)

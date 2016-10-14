@@ -1,7 +1,7 @@
 import pygame, sys, text,random,os
 from tile import Tile
 from gameManager import PlayerHealth
-from gameManager import Gerenciador
+from gameManager import Gerenciador,DisplayDamage
 from charactersC import Zombie
 
 pygame.mixer.init()
@@ -115,7 +115,11 @@ def GetHit(survivor,tela):
 	for zombie in Zombie.Lista:
 
 		if (U_Tile == zombie.get_number()) or (D_Tile == zombie.get_number()) or (L_Tile == zombie.get_number()) or (R_Tile == zombie.get_number()):
-			PlayerHealth.healthAmount -= 10
+			if Gerenciador.gameMode == 'easy':
+				PlayerHealth.healthAmount -= 10
+			else:
+				PlayerHealth.healthAmount -= 30
+			DisplayDamage.enemyHit = True
 
 			playerDamage.play(0)
 			somZumbi.play(0)
