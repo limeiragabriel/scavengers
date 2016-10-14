@@ -114,6 +114,8 @@ while True:
 
 
 	items.drawItem(tela)
+
+	items.ColectSpawnItem(survivor)
 	# ================== sistema de trurnos ==================================
 	if Manager.playerTurn:
 		MovePlayer(survivor)
