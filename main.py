@@ -4,6 +4,7 @@ from charactersC import *
 from interacoes import *
 from gameManager import *
 from menu import Menu
+from spawn import *
 
 pygame.init()
 pygame.mixer.init()
@@ -30,10 +31,21 @@ caminho = os.path.join("tileset", "DirtGround.png")
 ground = pygame.image.load(caminho).convert_alpha()
 # ========================================================================
 
-# =================== personagens ========================================
-zombie1 = Zombie(Tile.get_tile(126).x,Tile.get_tile(126).y)
+#=========================items spawpoits ================================
 
-zombie2 = Zombie(Tile.get_tile(146).x,Tile.get_tile(146).y)
+items = SpawnPoint()
+items.makeSpawns()
+
+#=========================================================================
+
+# =================== personagens ========================================
+zombie1 = Zombie(Tile.get_tile(106).x,Tile.get_tile(106).y)
+
+zombie2 = Zombie(Tile.get_tile(114).x,Tile.get_tile(114).y)
+
+zombie3 = Zombie(Tile.get_tile(206).x,Tile.get_tile(206).y)
+
+zombie4 = Zombie(Tile.get_tile(214).x,Tile.get_tile(214).y)
 
 survivor = Survivor(40,520)
 # ========================================================================
@@ -85,10 +97,13 @@ while True:
 		LevelAtual += 1
 		nextLevel(tela,survivor,LevelAtual)
 		survivor = Survivor(40,520)
+
+		items.randomItems()
 	# =====================================================================
 
 	# ================ torna nao andavel lugar onde tem zumbi ================
-	PosicaoDeZumbi(listaDeTiles)
+	if LevelAtual != 1:
+		PosicaoDeZumbi(listaDeTiles)
 	# ======================================================================
 
 	#tela.fill((0,0,0))
@@ -97,18 +112,22 @@ while True:
 
 	Tile.draw_tiles(tela)   # desenha os tiles do cenario
 
+
+	items.drawItem(tela)
 	# ================== sistema de trurnos ==================================
 	if Manager.playerTurn:
 		MovePlayer(survivor)
 	else:
 		#GetHit(survivor,tela)
 		MoveZombie(survivor)
-		GetHit(survivor,tela)
+		if LevelAtual != 1:
+			GetHit(survivor,tela)
 	# =========================================================================
 
 	# =============== zera as posicoes para atualiza-las =====================
-	AttPosicaoDeZumbi(listaDeTiles)
-	listaDeTiles = []
+	if LevelAtual != 1:
+		AttPosicaoDeZumbi(listaDeTiles)
+		listaDeTiles = []
 	# =========================================================================
 
 	# ======================== HUD =========================================
@@ -126,9 +145,14 @@ while True:
 	survivor.draw(tela) # desenha o sobrevivente
 
 	# zumbis =========================
-	zombie1.draw(tela)
+	if LevelAtual != 1:
+		zombie1.draw(tela)
 
-	zombie2.draw(tela)
+		zombie2.draw(tela)
+
+		zombie3.draw(tela)
+
+		zombie4.draw(tela)
 	# ===================
 	# ================================
 

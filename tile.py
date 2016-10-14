@@ -40,6 +40,8 @@ class Tile(pygame.Rect):
 		#self.idTilePath = random.randint(11,17)
 		self.tipo_ = random.randint(0,1)
 		# ...
+		self.isItemSpawn = False
+		self.itemType = 0
 
 		Tile.total_tiles += 1
 
