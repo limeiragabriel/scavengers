@@ -193,7 +193,7 @@ class Gerenciador():
 	 primeiroDia = True
 
 	 gameMode = 'easy'
-
+#======================================================================================
 
 #======================= mostra a recuperacao de vida ao pegar itens ============
 class LifeRegen():
@@ -220,7 +220,7 @@ def regenDrink(tela):
 		LifeRegen.displayDrink = False
 		LifeRegen.drinkTime = 0
 #=====================================================================================
-
+#======================= mostra o dano levado pelo player =============================
 class DisplayDamage():
 	enemyHit = False
 	displayTime = 0
@@ -237,3 +237,4 @@ def DisplayHitInfo(tela):
 	else:
 		DisplayDamage.enemyHit = False
 		DisplayDamage.displayTime = 0
+#=====================================================================================
