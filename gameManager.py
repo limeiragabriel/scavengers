@@ -60,7 +60,7 @@ def Intro(tela):
 		clock.tick(30)
 		tela.fill([0,0,0])
 		text.ExibirTexto(tela,'September 28.',100,500,15)
-		text.ExibirTexto(tela,'Press "ESC" to skip.',590,570,8)
+		text.ExibirTexto(tela,'Press any key to skip.',590,570,8)
 		skip()
 		tempo += 1
 		pygame.display.flip()
@@ -69,7 +69,7 @@ def Intro(tela):
 		clock.tick(30)
 		tela.fill([0,0,0])
 		text.ExibirTexto(tela,'Daylight...',100,500,15)
-		text.ExibirTexto(tela,'Press "ESC" to skip.',590,570,8)
+		text.ExibirTexto(tela,'Press any key to skip.',590,570,8)
 		skip()
 		tempo += 1
 		pygame.display.flip()
@@ -78,7 +78,7 @@ def Intro(tela):
 		clock.tick(30)
 		tela.fill([0,0,0])
 		text.ExibirTexto(tela,'The Monsters have overtaken the city.',100,500,15)
-		text.ExibirTexto(tela,'Press "ESC" to skip.',590,570,8)
+		text.ExibirTexto(tela,'Press any key to skip.',590,570,8)
 		skip()
 		tempo += 1
 		pygame.display.flip()
@@ -87,7 +87,7 @@ def Intro(tela):
 		clock.tick(30)
 		tela.fill([0,0,0])
 		text.ExibirTexto(tela,'Somehow...',100,500,15)
-		text.ExibirTexto(tela,'Press "ESC" to skip.',590,570,8)
+		text.ExibirTexto(tela,'Press any key to skip.',590,570,8)
 		skip()
 		tempo += 1
 		pygame.display.flip()
@@ -96,7 +96,7 @@ def Intro(tela):
 		clock.tick(30)
 		tela.fill([0,0,0])
 		text.ExibirTexto(tela,"I'm still... Alive.",100,500,15)
-		text.ExibirTexto(tela,'Press "ESC" to skip.',590,570,8)
+		text.ExibirTexto(tela,'Press any key to skip.',590,570,8)
 		skip()
 		tempo += 1
 		pygame.display.flip()
