@@ -67,3 +67,7 @@ Vocẽ está na pele de um sobrevivente do apocalipse zumbi em um mundo totalmen
   * depois de levar o primeiro hit do zumbi o player não gasta mais energia ao andar pelo cenario
   * zumbis atravessam player e vice-versa
   * zumbis se atravessam
+  
+### 18/10/2016
+
+* versão final (1.0)
